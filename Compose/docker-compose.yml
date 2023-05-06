@@ -1,0 +1,74 @@
+networks:
+
+
+  redwordsmith:
+
+
+    name: redwordsmith
+
+    
+services:
+
+
+        words:
+
+
+            build: ./words/
+
+
+            ports:
+
+
+            - 8080:8081
+
+
+            networks:
+
+
+            - redwordsmith
+
+services:
+
+
+        web:
+
+
+            build: ./web/
+
+
+            ports:
+
+
+            - 80:8082
+
+
+            networks:
+
+
+            - redwordsmith
+
+services:
+
+
+        db:
+
+
+            build: ./db/
+
+
+            ports: 
+
+
+            - 5434:5432
+
+
+            environment:
+
+
+            - POSTGRES_PASSWORD=P4s5#2023
+
+
+            networks:
+
+
+            - redwordsmith
